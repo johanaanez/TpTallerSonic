@@ -9,6 +9,7 @@
 #include <iostream>
 #include </usr/include/SDL2/SDL.h>
 #include <jansson.h>
+#include "jventana.h"
 
 using namespace std;
 
@@ -47,6 +48,8 @@ int main() {
          jsonventanaancho = json_object_get(jsonventana,"ancho");
          cout <<  json_number_value(jsonventanaancho)<< endl;
          cout <<  json_number_value(jsonventanaalto)<< endl;
+
+         jventana *ventana = new jventana();
 
 
       return 0;
