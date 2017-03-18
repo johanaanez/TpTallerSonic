@@ -30,7 +30,7 @@ int main(void) { /*******MAIN DE PRUEBA*******/
 	renderer = SDL_CreateRenderer(ventana, -1, SDL_RENDERER_ACCELERATED);
 
 
-	///////////////////////////////DIBUJO RECTANGULOS/////////////////////////////
+	///////////////////////////////DIBUJO FIGURAS CON COLOR SOLIDO/////////////////////////////
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(renderer);
 
@@ -52,6 +52,14 @@ int main(void) { /*******MAIN DE PRUEBA*******/
 
 	Circulo circulo = Circulo(50, 1, "Amarillo", "", 450, 450, 1);
 	circulo.dibujar(renderer);
+
+
+	//////////////////////////////////DIBUJO FIGURAS CON IMAGEN/////////////////////////////////
+	Rectangulo rectanguloConImagen = Rectangulo(300, 300, 1, "Amarillo", "res/sonic.bmp", 450, 50, 1);
+	rectanguloConImagen.dibujar(renderer);
+
+	Circulo circuloConImagen = Circulo(50, 1, "Amarillo", "res/sonic.bmp", 550, 550, 1);
+	circuloConImagen.dibujar(renderer);
 
 
 

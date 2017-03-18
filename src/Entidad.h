@@ -14,6 +14,7 @@ private:
 	SDL_Color color;
 	std::string rutaImagen;
 	unsigned int indexZ;
+	SDL_Texture *imagen;
 
 public:
 	Entidad();
@@ -23,6 +24,11 @@ public:
 	virtual ~Entidad();
 	int obtenerX();
 	int obtenerY();
+	SDL_Texture* obtenerImagen();
+	bool tieneImagen();
+	int cargarImagen(SDL_Renderer *renderer);
+	void destruirImagen();
+
 
 private:
 	SDL_Color convertirColor(std::string color);

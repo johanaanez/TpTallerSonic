@@ -22,8 +22,17 @@ Rectangulo::~Rectangulo() {
 
 void Rectangulo::dibujar(SDL_Renderer *renderer)
 {
-	this->setearColor(renderer);
-	SDL_RenderFillRect(renderer, &rectanguloSDL); //SDL_RenderDrawRect lo crea sin relleno
+	if (tieneImagen())
+	{
+		cargarImagen(renderer);
+		SDL_Rect recorte = {0, 0, ancho, alto}; //Toma la esquina superior izquierda de la imagen
+		SDL_RenderCopy(renderer, obtenerImagen(), &recorte, &rectanguloSDL);
+	}
+	else
+	{
+		this->setearColor(renderer);
+		SDL_RenderFillRect(renderer, &rectanguloSDL); //SDL_RenderDrawRect lo crea sin relleno
+	}
 }
 
 

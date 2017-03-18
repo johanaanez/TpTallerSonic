@@ -3,11 +3,11 @@
 
 #include "Entidad.h"
 
-class Rectangulo : Entidad
+class Rectangulo : public Entidad
 {
 private:
-	unsigned int ancho;
-	unsigned int alto;
+	int ancho;
+	int alto;
 	SDL_Rect rectanguloSDL;
 
 public:
