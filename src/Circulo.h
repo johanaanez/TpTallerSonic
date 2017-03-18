@@ -6,12 +6,13 @@
 class Circulo : Entidad
 {
 private:
-	unsigned int radio;
+	int radio;
 
 public:
 	Circulo();
-	Circulo(unsigned int radio, unsigned int id, std::string color, std::string rutaImagen, Coordenada coordenada, unsigned int indexZ);
+	Circulo(int radio, unsigned int id, std::string color, std::string rutaImagen, int x, int y, unsigned int indexZ);
 	virtual ~Circulo();
+	void dibujar(SDL_Renderer *renderer);
 
 private:
 

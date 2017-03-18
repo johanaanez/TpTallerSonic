@@ -1,19 +1,29 @@
 #include "Rectangulo.h"
 
-Rectangulo::Rectangulo() {
-	// TODO Auto-generated constructor stub
-
+Rectangulo::Rectangulo()
+{
+	this->ancho=0;
+	this->alto=0;
+	SDL_Rect rectanguloSDL = {0,0,0,0};
+	this->rectanguloSDL=rectanguloSDL;
 }
 
-Rectangulo::Rectangulo(unsigned int ancho, unsigned int alto, unsigned int id, std::string color, std::string rutaImagen, Coordenada coordenada, unsigned int indexZ) : Entidad(id, color, rutaImagen, coordenada, indexZ)
+Rectangulo::Rectangulo(int ancho, int alto, unsigned int id, std::string color, std::string rutaImagen, int x, int y, unsigned int indexZ) : Entidad(id, color, rutaImagen, x, y, indexZ)
 {
 	this->ancho=ancho;
 	this->alto=alto;
+	SDL_Rect rectanguloSDL = {x, y, ancho, alto};
+	this->rectanguloSDL=rectanguloSDL;
 }
 
 Rectangulo::~Rectangulo() {
 	// TODO Auto-generated destructor stub
 }
 
+void Rectangulo::dibujar(SDL_Renderer *renderer)
+{
+	this->setearColor(renderer);
+	SDL_RenderFillRect(renderer, &rectanguloSDL); //SDL_RenderDrawRect lo crea sin relleno
+}
 
 

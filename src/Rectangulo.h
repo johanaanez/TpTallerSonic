@@ -8,13 +8,14 @@ class Rectangulo : Entidad
 private:
 	unsigned int ancho;
 	unsigned int alto;
+	SDL_Rect rectanguloSDL;
 
 public:
 	Rectangulo();
-	Rectangulo(unsigned int ancho, unsigned int alto, unsigned int id, std::string color, std::string rutaImagen, Coordenada coordenada, unsigned int indexZ);
+	Rectangulo(int ancho, int alto, unsigned int id, std::string color, std::string rutaImagen, int x, int y, unsigned int indexZ);
 	virtual ~Rectangulo();
+	void dibujar(SDL_Renderer *renderer);
 
-	void imprimir();
 public:
 
 };
