@@ -46,10 +46,12 @@ int main() {
 
          jsonventanaalto = json_object_get(jsonventana,"alto");
          jsonventanaancho = json_object_get(jsonventana,"ancho");
-         cout <<  json_number_value(jsonventanaancho)<< endl;
-         cout <<  json_number_value(jsonventanaalto)<< endl;
+
 
          jventana *ventana = new jventana();
+
+         ventana->setalto(json_number_value(jsonventanaalto));
+         ventana->setancho(json_number_value(jsonventanaancho));
 
 
       return 0;
