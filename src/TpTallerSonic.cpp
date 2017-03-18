@@ -10,7 +10,7 @@
 #include </usr/include/SDL2/SDL.h>
 #include <jansson.h>
 #include "jventana.h"
-
+#include "jconfiguracion.h"
 using namespace std;
 
 int main() {
@@ -53,6 +53,16 @@ int main() {
          ventana->setalto(json_number_value(jsonventanaalto));
          ventana->setancho(json_number_value(jsonventanaancho));
 
+         // configuracion
+
+         json_t *jsonconfiguracion;
+
+         jsonconfiguracion = json_object_get(json, "configuracion");
+         jsonconfiguracion = json_object_get(jsonconfiguracion, "vel_scroll");
+
+         jconfiguracion *configuracion = new jconfiguracion();
+
+         configuracion->setvelscroll(json_number_value( jsonconfiguracion));
 
       return 0;
 }

@@ -6,16 +6,19 @@
 CPP_SRCS += \
 ../src/TpTallerSonic.cpp \
 ../src/jasonentidades.cpp \
+../src/jconfiguracion.cpp \
 ../src/jventana.cpp 
 
 OBJS += \
 ./src/TpTallerSonic.o \
 ./src/jasonentidades.o \
+./src/jconfiguracion.o \
 ./src/jventana.o 
 
 CPP_DEPS += \
 ./src/TpTallerSonic.d \
 ./src/jasonentidades.d \
+./src/jconfiguracion.d \
 ./src/jventana.d 
 
 
