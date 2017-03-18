@@ -5,15 +5,18 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/TpTallerSonic.cpp \
-../src/jasonentidades.cpp 
+../src/jasonentidades.cpp \
+../src/jasonventana.cpp 
 
 OBJS += \
 ./src/TpTallerSonic.o \
-./src/jasonentidades.o 
+./src/jasonentidades.o \
+./src/jasonventana.o 
 
 CPP_DEPS += \
 ./src/TpTallerSonic.d \
-./src/jasonentidades.d 
+./src/jasonentidades.d \
+./src/jasonventana.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
