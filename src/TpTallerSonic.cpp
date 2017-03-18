@@ -25,26 +25,28 @@ int main() {
 		   cout << error.text << endl;
 		 }
 
-	     json_t *jsonprueba;
+	  /*   json_t *jsonprueba;
 	     jsonprueba = json_object_get(json, "prueba");
 		 cout <<  json_number_value(jsonprueba)<< endl;
 
 		 jsonprueba = json_object_get(json, "configuracion");
 		 jsonprueba = json_object_get(jsonprueba, "vel_scroll");
 		 cout <<  json_number_value(jsonprueba)<< endl;
+      */
 
-		//json_string_value();
+	    //ventana
 
-	    for( int i = 0; i < json_array_size(json); i++ )
-	    {
-		  json_t *data; // data tiene el tamaño de todo el json parece
-          json_t *ventana;
-          json_t *configuracion;
-          json_t *entidades;
-		  data = json_array_get( json, i );
+         json_t *jsonventana;
+         json_t *jsonventanaalto;
+         json_t *jsonventanaancho;
 
-	  }
+         jsonventana = json_object_get(json, "ventana");
+         jsonventana = json_object_get(jsonventana,"dimensiones");
 
+         jsonventanaalto = json_object_get(jsonventana,"alto");
+         jsonventanaancho = json_object_get(jsonventana,"ancho");
+         cout <<  json_number_value(jsonventanaancho)<< endl;
+         cout <<  json_number_value(jsonventanaalto)<< endl;
 
 
       return 0;
