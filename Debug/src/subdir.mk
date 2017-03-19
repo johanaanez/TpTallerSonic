@@ -6,29 +6,35 @@
 CPP_SRCS += \
 ../src/TpTallerSonic.cpp \
 ../src/capas.cpp \
-../src/jasonentidades.cpp \
+../src/circulo.cpp \
+../src/dimensiones.cpp \
 ../src/jconfiguracion.cpp \
 ../src/jentidades.cpp \
 ../src/jescenario.cpp \
-../src/jventana.cpp 
+../src/jventana.cpp \
+../src/rectangulo.cpp 
 
 OBJS += \
 ./src/TpTallerSonic.o \
 ./src/capas.o \
-./src/jasonentidades.o \
+./src/circulo.o \
+./src/dimensiones.o \
 ./src/jconfiguracion.o \
 ./src/jentidades.o \
 ./src/jescenario.o \
-./src/jventana.o 
+./src/jventana.o \
+./src/rectangulo.o 
 
 CPP_DEPS += \
 ./src/TpTallerSonic.d \
 ./src/capas.d \
-./src/jasonentidades.d \
+./src/circulo.d \
+./src/dimensiones.d \
 ./src/jconfiguracion.d \
 ./src/jentidades.d \
 ./src/jescenario.d \
-./src/jventana.d 
+./src/jventana.d \
+./src/rectangulo.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

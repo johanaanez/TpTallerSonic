@@ -15,9 +15,12 @@
 #include "capas.h"
 #include "jentidades.h"
 #include <list>
+#include <map>
 using namespace std;
 
 int main() {
+
+
 	 json_t *json;
 	 json_error_t error;
 
@@ -97,10 +100,7 @@ int main() {
         	 jcapas->setindex(json_number_value(index_z));
         	 jcapas->setrutaimagen(json_string_value(ruta_imagen));
 
-           //  cout<<jcapas->getid()<<endl;
-           //  cout<<jcapas->getindex()<<endl;
-           //  cout<<jcapas->getrutaimagen()<<endl;
-          //  escenario->setcapas(jcapas);
+
              capalista.push_back(*jcapas);
 
          }
@@ -115,10 +115,70 @@ int main() {
          escenario->setalto(json_number_value(jsonesescealto));
          escenario->setancho(json_number_value(jsonesesceancho));
 
-         //cout << escenario->getalto() << endl;
-         //cout << escenario->getancho() << endl;
 
-         jentidades *entidades = new jentidades();
 
-      return 0;
+         //ENTIDADES(viene de escenario)
+         json_t *jsonentidades;
+
+         jsonentidades = json_object_get(jsonescenario, "entidades");
+
+         for( int i = 0; i < json_array_size(jsonentidades); i++ ){
+
+        	 json_t *auxi;
+        	 json_t *id;
+        	 json_t *tipo;
+        	 json_t *color;
+        	 json_t *ruta_imagen;
+        	 json_t *index_z;
+        	 json_t *dimensiones;
+        	 json_t *coordenada;
+        	 json_t *coorx;
+        	 json_t *coory;
+
+        	 auxi = json_array_get(jsonentidades, i);
+
+        	 id = json_object_get(auxi,"id");
+        	 tipo = json_object_get(auxi,"tipo");
+        	 color = json_object_get(auxi,"color");
+        	 dimensiones= json_object_get(auxi,"dimensiones");
+
+
+        	 //la dimension puede ser un rectangulo un circulo...
+        	 const char *clave;
+        	 json_t *valordimension;
+
+        	 void *iter = json_object_iter(dimensiones);
+        	 //en clave obtengo el ancho,alto y radio
+        	 clave = json_object_iter_key(iter);
+        	 while(iter)
+        	     {
+        	       clave = json_object_iter_key(iter);
+        	       valordimension = json_object_iter_value(iter);
+                   //me muestra perfecto el valor del rectangulo y el radio
+
+        	        cout << json_integer_value(valordimension) << endl;
+        	        iter = json_object_iter_next(dimensiones, iter);
+        	      }
+
+        	 coordenada = json_object_get(auxi,"coordenada");
+        	 coorx = json_object_get(coordenada,"x");
+        	 coory = json_object_get(coordenada,"y");
+        	 ruta_imagen = json_object_get(auxi,"ruta_imagen");
+        	 index_z= json_object_get(auxi,"index_z");
+
+        	// cout << json_integer_value(id) << endl;
+        	// cout << json_string_value(tipo) << endl;
+        	// cout << json_string_value(color) << endl;
+        	// cout << json_integer_value(valordimension) << endl;
+        	// cout << json_integer_value(coorx) << endl;
+        	// cout << json_integer_value(coory) << endl;
+        	// cout << json_string_value(ruta_imagen) << endl;
+        	 //cout << json_integer_value(index_z) << endl;
+         }
+
+         //jentidades *entidades = new jentidades();
+
+
+ //     return 0;
 }
+
