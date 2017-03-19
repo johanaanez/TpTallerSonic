@@ -13,6 +13,7 @@
 #include "jconfiguracion.h"
 #include "jescenario.h"
 #include "capas.h"
+#include "jentidades.h"
 #include <list>
 using namespace std;
 
@@ -117,6 +118,7 @@ int main() {
          //cout << escenario->getalto() << endl;
          //cout << escenario->getancho() << endl;
 
+         jentidades *entidades = new jentidades();
 
       return 0;
 }

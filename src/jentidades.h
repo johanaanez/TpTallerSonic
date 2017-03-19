@@ -1,52 +1,53 @@
 /*
- * jasonentidades.h
+ * jentidades.h
  *
- *  Created on: 17 mar. 2017
+ *  Created on: 18 mar. 2017
  *      Author: pato
  */
 
-#ifndef JASONENTIDADES_H_
-#define JASONENTIDADES_H_
+#ifndef JENTIDADES_H_
+#define JENTIDADES_H_
 #include <string>
 
-namespace json {
+namespace std {
 
-class jasonentidad {
+class jentidades {
 public:
-
-// id
+	jentidades();
+	virtual ~jentidades();
+	// id
 	int getid();
 	void setid(int);
 
-//tipo
+	//tipo
 	std::string gettipo();
 	void settipo(std::string);
 
-// color
+	// color
 	std::string getcolor();
-	void   setcolor(std::string);
+	void setcolor(std::string);
 
-// dimension ancho
+	// dimension ancho
 	int getancho();
 	void setancho(int);
 
-// dimension alto
+	// dimension alto
 	int getalto();
 	void setalto(int);
 
-// coordenada x
+	// coordenada x
 	int getcoorx();
 	void setcoorx(int);
 
-// coordenada y
+	// coordenada y
 	int getcoory();
 	void setcoory(int);
 
-//rutaimagen
+	//rutaimagen
 	std::string getruta();
 	void setruta(std::string);
 
-//index
+	//index
 	int getindex();
 	void setindex(int);
 
@@ -61,11 +62,8 @@ private:
 	std::string ruta;
 	int index;
 
-public:
-	jasonentidad();
-	virtual ~jasonentidad();
 };
 
-} /* namespace json */
+} /* namespace std */
 
-#endif /* JASONENTIDADES_H_ */
+#endif /* JENTIDADES_H_ */
