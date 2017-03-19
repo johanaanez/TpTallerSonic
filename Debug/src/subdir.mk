@@ -5,20 +5,26 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/TpTallerSonic.cpp \
+../src/capas.cpp \
 ../src/jasonentidades.cpp \
 ../src/jconfiguracion.cpp \
+../src/jescenario.cpp \
 ../src/jventana.cpp 
 
 OBJS += \
 ./src/TpTallerSonic.o \
+./src/capas.o \
 ./src/jasonentidades.o \
 ./src/jconfiguracion.o \
+./src/jescenario.o \
 ./src/jventana.o 
 
 CPP_DEPS += \
 ./src/TpTallerSonic.d \
+./src/capas.d \
 ./src/jasonentidades.d \
 ./src/jconfiguracion.d \
+./src/jescenario.d \
 ./src/jventana.d 
 
 

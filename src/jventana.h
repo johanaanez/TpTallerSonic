@@ -8,6 +8,7 @@
 #ifndef JVENTANA_H_
 #define JVENTANA_H_
 
+
 namespace std {
 
 class jventana {

@@ -20,7 +20,8 @@ src/TpTallerSonic.o: ../src/TpTallerSonic.cpp /usr/include/SDL2/SDL.h \
  /usr/include/SDL2/SDL_messagebox.h /usr/include/SDL2/SDL_power.h \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_system.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
- ../src/jventana.h ../src/jconfiguracion.h
+ ../src/jventana.h ../src/jconfiguracion.h ../src/jescenario.h \
+ ../src/capas.h
 
 /usr/include/SDL2/SDL.h:
 
@@ -111,3 +112,7 @@ src/TpTallerSonic.o: ../src/TpTallerSonic.cpp /usr/include/SDL2/SDL.h \
 ../src/jventana.h:
 
 ../src/jconfiguracion.h:
+
+../src/jescenario.h:
+
+../src/capas.h:
