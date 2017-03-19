@@ -66,7 +66,7 @@ SDL_Texture* Entidad::obtenerImagen()
 	return imagen;
 }
 
-bool Entidad::tieneImagen()
+bool Entidad::tieneRutaImagen()
 {
 	if (rutaImagen == "")
 		return false;
@@ -76,18 +76,24 @@ bool Entidad::tieneImagen()
 
 int Entidad::cargarImagen(SDL_Renderer *renderer)
 {
-	SDL_Surface *imagenTemp = NULL;
-	const char *ruta = rutaImagen.c_str();
-	imagenTemp=SDL_LoadBMP(ruta);
+	if ((rutaImagen != "") && (imagen != NULL))
+	{
+		//Imagen ya cargada
+		return 0;
+	}
 
-	if(imagenTemp == NULL)
+	SDL_Surface *imagenCargada = NULL;
+
+	imagenCargada=IMG_Load(rutaImagen.c_str()); //SDL_LoadBMP(rutaImagen.c_str()); //Para cargar BMP
+
+	if(imagenCargada == NULL)
 	{
 		std::cout << "Error: " << SDL_GetError() << std::endl;
 		return 1;
 	}
 
-	imagen = SDL_CreateTextureFromSurface(renderer, imagenTemp);
-	SDL_FreeSurface(imagenTemp);
+	imagen = SDL_CreateTextureFromSurface(renderer, imagenCargada);
+	SDL_FreeSurface(imagenCargada);
 
 	return 0;
 }

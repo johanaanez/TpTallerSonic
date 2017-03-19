@@ -16,7 +16,7 @@ Circulo::~Circulo() {
 
 void Circulo::dibujar(SDL_Renderer *renderer)
 {
-	if (tieneImagen())
+	if (tieneRutaImagen())
 	{
 		cargarImagen(renderer);
 		dibujarImagen(renderer);

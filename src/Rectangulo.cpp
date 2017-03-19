@@ -22,7 +22,7 @@ Rectangulo::~Rectangulo() {
 
 void Rectangulo::dibujar(SDL_Renderer *renderer)
 {
-	if (tieneImagen())
+	if (tieneRutaImagen())
 	{
 		cargarImagen(renderer);
 		SDL_Rect recorte = {0, 0, ancho, alto}; //Toma la esquina superior izquierda de la imagen

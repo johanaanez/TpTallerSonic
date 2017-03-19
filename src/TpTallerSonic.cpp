@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "Rectangulo.h"
 #include "Circulo.h"
 
@@ -23,9 +24,19 @@ int main(void) { /*******MAIN DE PRUEBA*******/
 		return 1;
 	}
 
+	/////////INICIAR SDL_IMAGE
+	int flag = IMG_INIT_PNG;
+	if(!(IMG_Init(IMG_INIT_PNG) & flag))
+	{
+		cout << "Error: " << IMG_GetError() << endl;
+		SDL_DestroyWindow(ventana);
+		ventana = NULL;
+		return 1;
+	}
+
 
 	///////CREO RENDERER
-	//Lo necesito para dibujar las formas solidas
+	//Lo necesito para dibujar
 	SDL_Renderer* renderer = NULL;
 	renderer = SDL_CreateRenderer(ventana, -1, SDL_RENDERER_ACCELERATED);
 
@@ -55,10 +66,10 @@ int main(void) { /*******MAIN DE PRUEBA*******/
 
 
 	//////////////////////////////////DIBUJO FIGURAS CON IMAGEN/////////////////////////////////
-	Rectangulo rectanguloConImagen = Rectangulo(300, 300, 1, "Amarillo", "res/sonic.bmp", 450, 50, 1);
+	Rectangulo rectanguloConImagen = Rectangulo(300, 300, 1, "Amarillo", "res/sonic.png", 450, 50, 1);
 	rectanguloConImagen.dibujar(renderer);
 
-	Circulo circuloConImagen = Circulo(50, 1, "Amarillo", "res/sonic.bmp", 550, 550, 1);
+	Circulo circuloConImagen = Circulo(50, 1, "Amarillo", "res/sonic.png", 550, 550, 1);
 	circuloConImagen.dibujar(renderer);
 
 

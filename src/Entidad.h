@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 class Entidad {
 
@@ -25,13 +26,13 @@ public:
 	int obtenerX();
 	int obtenerY();
 	SDL_Texture* obtenerImagen();
-	bool tieneImagen();
+	bool tieneRutaImagen();
 	int cargarImagen(SDL_Renderer *renderer);
-	void destruirImagen();
 
 
 private:
 	SDL_Color convertirColor(std::string color);
+	void destruirImagen();
 
 };
 
