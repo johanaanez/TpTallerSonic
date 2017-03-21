@@ -4,7 +4,6 @@
  *  Created on: 19 mar. 2017
  *      Author: pato
  */
-
 #include "dimensiones.h"
 
 namespace std {

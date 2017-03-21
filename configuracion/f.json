@@ -24,6 +24,9 @@
 			"dimensiones": {"ancho": 40, "alto": 20},
 			"coordenada": {"x": 128, "y": 405},
 			"ruta_imagen": "/images/entidad1.png",
+			"index_z": 99
+		},
+		{
 			"id": 2,
 			"tipo": "rectangulo",
 			"color": "verde",

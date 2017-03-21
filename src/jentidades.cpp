@@ -6,6 +6,7 @@
  */
 
 #include "jentidades.h"
+#include "dimensiones.h"
 
 namespace std {
 

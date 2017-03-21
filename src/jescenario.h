@@ -8,6 +8,7 @@
 #ifndef JESCENARIO_H_
 #define JESCENARIO_H_
 #include "capas.h"
+#include "jentidades.h"
 #include <list>
 
 namespace std {
@@ -29,11 +30,15 @@ public:
     list<capas> getcapas();
     void setcapas(list<capas>);
 
+    //entidades
+    list<jentidades>getentidades();
+    void setentidades(list<jentidades>);
+
 private:
 	int ancho;
     int alto;
-    capas c;
-
+    list<capas> c;
+    list<jentidades> je;
 };
 
 } /* namespace std */

@@ -6,35 +6,38 @@
 CPP_SRCS += \
 ../src/TpTallerSonic.cpp \
 ../src/capas.cpp \
-../src/circulo.cpp \
 ../src/dimensiones.cpp \
+../src/jcirculo.cpp \
 ../src/jconfiguracion.cpp \
 ../src/jentidades.cpp \
 ../src/jescenario.cpp \
+../src/jrectangulo.cpp \
 ../src/jventana.cpp \
-../src/rectangulo.cpp 
+../src/parseadorJson.cpp 
 
 OBJS += \
 ./src/TpTallerSonic.o \
 ./src/capas.o \
-./src/circulo.o \
 ./src/dimensiones.o \
+./src/jcirculo.o \
 ./src/jconfiguracion.o \
 ./src/jentidades.o \
 ./src/jescenario.o \
+./src/jrectangulo.o \
 ./src/jventana.o \
-./src/rectangulo.o 
+./src/parseadorJson.o 
 
 CPP_DEPS += \
 ./src/TpTallerSonic.d \
 ./src/capas.d \
-./src/circulo.d \
 ./src/dimensiones.d \
+./src/jcirculo.d \
 ./src/jconfiguracion.d \
 ./src/jentidades.d \
 ./src/jescenario.d \
+./src/jrectangulo.d \
 ./src/jventana.d \
-./src/rectangulo.d 
+./src/parseadorJson.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

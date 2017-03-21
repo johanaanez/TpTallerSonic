@@ -1,4 +1,4 @@
-src/TpTallerSonic.o: ../src/TpTallerSonic.cpp /usr/include/SDL2/SDL.h \
+src/parseadorJson.o: ../src/parseadorJson.cpp /usr/include/SDL2/SDL.h \
  /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
  /usr/include/SDL2/SDL_config.h /usr/include/SDL2/SDL_platform.h \
  /usr/include/SDL2/begin_code.h /usr/include/SDL2/close_code.h \
@@ -22,7 +22,7 @@ src/TpTallerSonic.o: ../src/TpTallerSonic.cpp /usr/include/SDL2/SDL.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
  ../src/jventana.h ../src/jconfiguracion.h ../src/jescenario.h \
  ../src/capas.h ../src/jentidades.h ../src/dimensiones.h \
- ../src/parseadorJson.h
+ ../src/parseadorJson.h ../src/jrectangulo.h ../src/jcirculo.h
 
 /usr/include/SDL2/SDL.h:
 
@@ -123,3 +123,7 @@ src/TpTallerSonic.o: ../src/TpTallerSonic.cpp /usr/include/SDL2/SDL.h \
 ../src/dimensiones.h:
 
 ../src/parseadorJson.h:
+
+../src/jrectangulo.h:
+
+../src/jcirculo.h:

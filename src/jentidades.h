@@ -8,6 +8,7 @@
 #ifndef JENTIDADES_H_
 #define JENTIDADES_H_
 #include <string>
+#include "dimensiones.h"
 
 namespace std {
 
@@ -61,7 +62,7 @@ private:
 	int coory;
 	std::string ruta;
 	int index;
-
+	dimensiones* dim;
 };
 
 } /* namespace std */
