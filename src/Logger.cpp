@@ -48,7 +48,18 @@ int Logger::validateLevel(){
 
 }
 int Logger::addLogMessage(string logMessage){
-	return 0;
+	if (validateFileName() == 0){
+		ofstream myfile;
+		time_t t = time(NULL);
+		char *dateTime;
+		strftime(dateTime, 100, "%d/%m/%Y %T", localtime(&t));
+		myfile.open("file");
+		myfile << "["<< this->level<< "] "<<dateTime << logMessage;
+		myfile.close();
+		return 0;
+	}
+
+	return -1;
 }
 
 Logger::~Logger() {
