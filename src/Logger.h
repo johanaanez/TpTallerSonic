@@ -10,21 +10,29 @@ using namespace std;
 class Logger {
 
 private:
-	const char* file; //file name where the logger is become to write all messages
+	string file; //file name where the logger is become to write all messages
 	int level;   //TODO(joha): create a level struct with 3 log values: high, medium and low
 	vector<string> logMessages; //TODO(joha): create a logMessage class with attributes like timeStamp and message
 
 public:
 	Logger();
+	Logger(string fileName, int level);
+	Logger(int level);
 	virtual ~Logger();
 
-    vector<string> getLogMessages() const;
+    string getFile() const;
     void setFile(string file);
 
-    void setLevel(int level);
-    void setLogMessages(vector<string> logMessages);
-    const char *getFile() const;
-    int getLevel() const;
+    vector<string> getLogMessages() const;
+	void setLogMessages(vector<string> logMessages);
+
+	int getLevel() const;
+	void setLevel(int level);
+
+	int validateFileName();
+	int validateLevel();
+	int addLogMessage(string logMessage);
+
 };
 
 #endif /* LOGGER_H_ */

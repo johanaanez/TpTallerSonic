@@ -8,10 +8,17 @@
 #include "Logger.h"
 
 Logger::Logger() {
-	 google::InitGoogleLogging(file);
-	 LOG(INFO) << "Found ";
+	this->level = 2;
 }
 
+Logger::Logger(string fileName, int level){
+	this->file = fileName;
+	this->level = level;
+}
+
+Logger::Logger(int level){
+	this->level = level;
+}
 
 vector<string> Logger::getLogMessages() const
 {
@@ -22,10 +29,6 @@ void Logger::setLevel(int level)
     this->level = level;
 }
 
-const char *Logger::getFile() const
-{
-    return file;
-}
 
 int Logger::getLevel() const
 {
@@ -35,6 +38,17 @@ int Logger::getLevel() const
 void Logger::setLogMessages(vector<string> logMessages)
 {
     this->logMessages = logMessages;
+}
+
+int Logger::validateFileName(){
+	return 0;
+}
+int Logger::validateLevel(){
+	return 0;
+
+}
+int Logger::addLogMessage(string logMessage){
+	return 0;
 }
 
 Logger::~Logger() {
