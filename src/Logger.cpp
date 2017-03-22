@@ -8,37 +8,31 @@
 #include "Logger.h"
 
 Logger::Logger() {
-	this->level = 2;
+	this->nivel = 2;
 }
 
 Logger::Logger(string fileName, int level){
-	this->file = fileName;
-	this->level = level;
+	this->archivo = fileName;
+	this->nivel = level;
 }
 
 Logger::Logger(int level){
-	this->level = level;
+	this->nivel = level;
 }
 
-vector<string> Logger::getLogMessages() const
-{
-    return logMessages;
-}
+
 void Logger::setLevel(int level)
 {
-    this->level = level;
+    this->nivel = level;
 }
 
 
 int Logger::getLevel() const
 {
-    return level;
+    return nivel;
 }
 
-void Logger::setLogMessages(vector<string> logMessages)
-{
-    this->logMessages = logMessages;
-}
+
 
 int Logger::validateFileName(){
 	return 0;
@@ -47,6 +41,7 @@ int Logger::validateLevel(){
 	return 0;
 
 }
+
 int Logger::addLogMessage(string logMessage){
 	if (validateFileName() == 0){
 		ofstream myfile;
@@ -54,7 +49,7 @@ int Logger::addLogMessage(string logMessage){
 		char *dateTime;
 		strftime(dateTime, 100, "%d/%m/%Y %T", localtime(&t));
 		myfile.open("file");
-		myfile << "["<< this->level<< "] "<<dateTime << logMessage;
+		myfile << "["<< this->nivel<< "] "<<dateTime << logMessage;
 		myfile.close();
 		return 0;
 	}

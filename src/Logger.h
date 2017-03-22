@@ -1,19 +1,20 @@
 #ifndef LOGGER_H_
 #define LOGGER_H_
 
-#include <glog/logging.h>
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include "Mensaje.h"
 
 using namespace std;
 
 class Logger {
 
 private:
-	string file; //file name where the logger is become to write all messages
-	int level;   //TODO(joha): create a level struct with 3 log values: high, medium and low
-	vector<string> logMessages; //TODO(joha): create a logMessage class with attributes like timeStamp and message
+	string archivo; //file name where the logger is become to write all messages
+	int nivel;   //TODO(joha): create a level struct with 3 log values: high, medium and low
+	vector<string> logMessages;
 
 public:
 	Logger();
@@ -24,8 +25,6 @@ public:
     string getFile() const;
     void setFile(string file);
 
-    vector<string> getLogMessages() const;
-	void setLogMessages(vector<string> logMessages);
 
 	int getLevel() const;
 	void setLevel(int level);

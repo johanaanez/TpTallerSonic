@@ -5,14 +5,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/Logger.cpp \
+../src/Mensaje.cpp \
 ../src/TpTallerSonic.cpp 
 
 OBJS += \
 ./src/Logger.o \
+./src/Mensaje.o \
 ./src/TpTallerSonic.o 
 
 CPP_DEPS += \
 ./src/Logger.d \
+./src/Mensaje.d \
 ./src/TpTallerSonic.d 
 
 
