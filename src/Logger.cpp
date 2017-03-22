@@ -55,7 +55,7 @@ void Logger::setArchivo(char *archivo)
 int Logger::addLogMessage(string logMessage){
 	if (validateFileName() == 0){
 		ofstream myfile;
-		myfile.open(this->archivo);
+		myfile.open(this->archivo, ios_base::app);
 
 		//imprime la fecha actual con horas de usa
 		time_t t = time(0);   // get time now
