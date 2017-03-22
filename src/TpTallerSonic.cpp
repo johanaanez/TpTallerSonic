@@ -4,7 +4,6 @@
 #include "Rectangulo.h"
 #include "Circulo.h"
 
-
 using namespace std;
 
 int main(void) { /*******MAIN DE PRUEBA*******/
@@ -44,35 +43,39 @@ int main(void) { /*******MAIN DE PRUEBA*******/
 	///////////////////////////////DIBUJO FIGURAS CON COLOR SOLIDO/////////////////////////////
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(renderer);
-
-	Rectangulo rectangulo = Rectangulo(100, 100, 1, "Amarillo", "", 100, 100, 1);
+/*
+	Rectangulo rectangulo = Rectangulo(100, 100, 1, "amarillo", "", 100, 100, 1);
 	rectangulo.dibujar(renderer);
 
-	Rectangulo rectangulo2 = Rectangulo(100, 100, 1, "Verde", "", 0, 0, 1);
+	Rectangulo rectangulo2 = Rectangulo(100, 100, 1, "verde", "", 0, 0, 1);
 	rectangulo2.dibujar(renderer);
 
-	Rectangulo rectangulo3 = Rectangulo(100, 100, 1, "Rojo", "", 200, 200, 1);
+	Rectangulo rectangulo3 = Rectangulo(100, 100, 1, "rojo", "", 200, 200, 1);
 	rectangulo3.dibujar(renderer);
 
-	Rectangulo rectangulo4 = Rectangulo(100, 100, 1, "Azul", "", 300, 300, 1);
+	Rectangulo rectangulo4 = Rectangulo(100, 100, 1, "azul", "", 300, 300, 1);
 	rectangulo4.dibujar(renderer);
 
-	Rectangulo rectanguloFueraDeLimites = Rectangulo(1000, 30, 1, "Rojo", "", 0, 0, 1);
+	Rectangulo rectanguloFueraDeLimites = Rectangulo(1000, 30, 1, "rojo", "", 0, 0, 1);
 	rectanguloFueraDeLimites.dibujar(renderer);
 	//TODO: Ver que pasa cuando se desplaza la ventana
 
-	Circulo circulo = Circulo(50, 1, "Amarillo", "", 450, 450, 1);
+	Circulo circulo = Circulo(50, 1, "amarillo", "", 450, 450, 1);
 	circulo.dibujar(renderer);
 
 
 	//////////////////////////////////DIBUJO FIGURAS CON IMAGEN/////////////////////////////////
-	Rectangulo rectanguloConImagen = Rectangulo(300, 300, 1, "Amarillo", "res/sonic.png", 450, 50, 1);
+	Rectangulo rectanguloConImagen = Rectangulo(300, 300, 1, "amarillo", "res/sonic.png", 450, 50, 1);
 	rectanguloConImagen.dibujar(renderer);
 
-	Circulo circuloConImagen = Circulo(50, 1, "Amarillo", "res/sonic.png", 550, 550, 1);
+	Circulo circuloConImagen = Circulo(50, 1, "amarillo", "res/sonic.png", 550, 550, 1);
 	circuloConImagen.dibujar(renderer);
+*/
+	Rectangulo rectanguloGrande = Rectangulo(800, 600, 1, "amarillo", "res/tile.png", 0, 0, 1);
+	rectanguloGrande.dibujar(renderer);
 
-
+	//Actualizar la pantalla
+	SDL_RenderPresent(renderer);
 
 	////////////MAIN LOOP
 	bool salir = false;
@@ -87,7 +90,7 @@ int main(void) { /*******MAIN DE PRUEBA*******/
 			}
 		}
 		//Mientras no salgo actualizar la pantalla
-		SDL_RenderPresent(renderer);
+		//SDL_RenderPresent(renderer);
 	}
 
 

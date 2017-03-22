@@ -15,6 +15,7 @@ public:
 	Rectangulo(int ancho, int alto, unsigned int id, std::string color, std::string rutaImagen, int x, int y, unsigned int indexZ);
 	virtual ~Rectangulo();
 	void dibujar(SDL_Renderer *renderer);
+	void repetirImagen(SDL_Renderer *renderer);
 
 public:
 

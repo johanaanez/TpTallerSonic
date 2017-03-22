@@ -10,10 +10,10 @@ class Entidad {
 
 private:
 	unsigned int id;
-	int x;
-	int y;
 	SDL_Color color;
 	std::string rutaImagen;
+	int x;
+	int y;
 	unsigned int indexZ;
 	SDL_Texture *imagen;
 
@@ -28,6 +28,7 @@ public:
 	SDL_Texture* obtenerImagen();
 	bool tieneRutaImagen();
 	int cargarImagen(SDL_Renderer *renderer);
+
 
 
 private:

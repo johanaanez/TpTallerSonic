@@ -1,13 +1,14 @@
 #include "Circulo.h"
 
-Circulo::Circulo()
+Circulo::Circulo() : radio()
 {
-	this->radio=0;
+
 }
 
-Circulo::Circulo(int radio, unsigned int id, std::string color, std::string rutaImagen, int x, int y, unsigned int indexZ) : Entidad(id, color, rutaImagen, x, y, indexZ)
+Circulo::Circulo(int radio, unsigned int id, std::string color, std::string rutaImagen, int x, int y, unsigned int indexZ)
+: Entidad(id, color, rutaImagen, x, y, indexZ), radio(radio)
 {
-	this->radio=radio;
+
 }
 
 Circulo::~Circulo() {

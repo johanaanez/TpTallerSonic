@@ -1,26 +1,15 @@
 #include "Entidad.h"
 
-Entidad::Entidad()
+Entidad::Entidad() : id(), rutaImagen(""), x(), y(), indexZ(), imagen(NULL)
 {
-	this->id=0;
-	SDL_Color colorSDL = {0, 0, 0, 0};
-	this->color=colorSDL;
-	this->rutaImagen="";
-	this->x=0;
-	this->y=0;
-	this->indexZ=0;
-	this->imagen=NULL;
+
 }
 
-Entidad::Entidad(unsigned int id, std::string color, std::string rutaImagen, int x, int y, unsigned int indexZ){
-	this->id=id;
+Entidad::Entidad(unsigned int id, std::string color, std::string rutaImagen, int x, int y, unsigned int indexZ)
+: id(id), rutaImagen(rutaImagen), x(x), y(y), indexZ(indexZ), imagen(NULL)
+{
 	SDL_Color colorSDL = convertirColor(color);
 	this->color=colorSDL;
-	this->rutaImagen=rutaImagen;
-	this->x=x;
-	this->y=y;
-	this->indexZ=indexZ;
-	this->imagen=NULL;
 }
 
 Entidad::~Entidad()
@@ -31,16 +20,16 @@ Entidad::~Entidad()
 SDL_Color Entidad::convertirColor(std::string color)
 {
 	SDL_Color colorSDL = {0, 0, 0, 0};
-	if (color == "Amarillo"){
+	if (color == "amarillo"){
 		colorSDL.r = 255; colorSDL.g = 255; colorSDL.b = 0; colorSDL.a = 255;
 	}
-	else if (color == "Azul"){
+	else if (color == "azul"){
 		colorSDL.r = 0; colorSDL.g = 0; colorSDL.b = 255; colorSDL.a = 255;
 	}
-	else if (color == "Rojo"){
+	else if (color == "rojo"){
 		colorSDL.r = 255; colorSDL.g = 0; colorSDL.b = 0; colorSDL.a = 255;
 	}
-	else if (color == "Verde"){
+	else if (color == "verde"){
 		colorSDL.r = 0; colorSDL.g = 255; colorSDL.b = 0; colorSDL.a = 255;
 	}
 	return colorSDL;
