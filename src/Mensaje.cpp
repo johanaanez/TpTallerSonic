@@ -28,7 +28,9 @@ void Mensaje::setNivel(int nivel)
 
 time_t Mensaje::getFecha() const
 {
-    return fecha;
+	time_t t = time(0);   // get time now
+	return t;
+
 }
 
 void Mensaje::setFecha(time_t fecha)
@@ -37,6 +39,7 @@ void Mensaje::setFecha(time_t fecha)
 }
 
 void Mensaje::imprimirMensaje(){
+	struct tm * now = localtime(&this->fecha);
 
 }
 

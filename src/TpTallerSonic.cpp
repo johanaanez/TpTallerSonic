@@ -6,8 +6,15 @@ using namespace std;
 
 int main() {
 
-	string logback = "logback.xml";
-	cout << "Logger" << endl;
-	Logger *log = new Logger();
+	char *file = "log.txt";
+
+	Logger *log = new Logger(file, 2);
+	string apertura = "Se abrio el archivo.";
+	string cierre = "Se cerro el archivo.";
+
+
+
+	log->addLogMessage(apertura);
+	log->addLogMessage(cierre);
 	return 0;
 }

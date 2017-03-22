@@ -1,17 +1,10 @@
-/*
- * Logger.cpp
- *
- *  Created on: 18/03/2017
- *      Author: joha
- */
-
 #include "Logger.h"
 
 Logger::Logger() {
 	this->nivel = 2;
 }
 
-Logger::Logger(string fileName, int level){
+Logger::Logger(char *fileName, int level){
 	this->archivo = fileName;
 	this->nivel = level;
 }
@@ -32,9 +25,8 @@ int Logger::getLevel() const
     return nivel;
 }
 
-
-
 int Logger::validateFileName(){
+
 	return 0;
 }
 int Logger::validateLevel(){
@@ -42,14 +34,38 @@ int Logger::validateLevel(){
 
 }
 
+char *Logger::getArchivo() const
+{
+    return archivo;
+}
+
+void Logger::setArchivo(char *archivo)
+{
+    this->archivo = archivo;
+}
+
 int Logger::addLogMessage(string logMessage){
 	if (validateFileName() == 0){
 		ofstream myfile;
-		time_t t = time(NULL);
-		char *dateTime;
-		strftime(dateTime, 100, "%d/%m/%Y %T", localtime(&t));
-		myfile.open("file");
-		myfile << "["<< this->nivel<< "] "<<dateTime << logMessage;
+		myfile.open(this->archivo);
+
+		//imprime la fecha actual con horas de usa
+		time_t t = time(0);   // get time now
+	    struct tm * now = localtime( & t );
+	    myfile <<"["
+	    	 <<	(now->tm_year + 1900) << '-'
+	         << (now->tm_mon + 1) << '-'
+	         <<  now->tm_mday
+	         <<  " "
+	         <<  now->tm_hour
+	         <<  ":"
+	         <<  now->tm_min
+	         <<  ":"
+	         <<  now->tm_sec
+	         <<  "] ";
+
+	    // imprime el nivel+ mensaje
+		myfile <<"["<< this->nivel<<"] "<<" [modulo] "<<logMessage<< endl;
 		myfile.close();
 		return 0;
 	}
