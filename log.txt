@@ -1,1 +1,1 @@
-[2017-3-22 0:37:45] [2]  [modulo] Se cerro el archivo.
+[2017-3-22 1:1:13] [INFO]  [modulo] Se cerro el archivo.

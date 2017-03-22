@@ -1,28 +1,36 @@
 #include "Logger.h"
 
 Logger::Logger() {
-	this->nivel = 2;
+	this->nivel = DEBBUG;
 }
 
 Logger::Logger(char *fileName, int level){
 	this->archivo = fileName;
-	this->nivel = level;
-}
+	this->setLevel(level);
 
-Logger::Logger(int level){
-	this->nivel = level;
 }
 
 
 void Logger::setLevel(int level)
 {
-    this->nivel = level;
+	switch(level)
+		{
+		    case 1: this->nivel = INFO;   break;
+		    case 2: this->nivel = DEBBUG; break;
+		    case 3: this->nivel = ERROR;  break;
+		}
 }
 
 
-int Logger::getLevel() const
+char* Logger::getLevel() const
 {
-    return nivel;
+	switch(this->nivel)
+	{
+		case 1: return "INFO";
+		case 2: return "DEBBUG";
+		case 3: return "ERROR";
+	}
+	return "SS";
 }
 
 int Logger::validateFileName(){
@@ -65,7 +73,7 @@ int Logger::addLogMessage(string logMessage){
 	         <<  "] ";
 
 	    // imprime el nivel+ mensaje
-		myfile <<"["<< this->nivel<<"] "<<" [modulo] "<<logMessage<< endl;
+		myfile <<"["<< this->getLevel()<<"] "<<" [modulo] "<<logMessage<< endl;
 		myfile.close();
 		return 0;
 	}
