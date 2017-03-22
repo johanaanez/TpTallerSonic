@@ -1,7 +1,6 @@
 #ifndef MENSAJE_H_
 #define MENSAJE_H_
 
-#include <string>
 #include <stdio.h>
 #include <time.h>
 #include <iostream>

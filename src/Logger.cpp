@@ -57,7 +57,7 @@ int Logger::addLogMessage(string logMessage){
 		ofstream myfile;
 		myfile.open(this->archivo, ios_base::app);
 
-		//imprime la fecha actual con horas de usa
+		//imprime la fecha actual
 		time_t t = time(0);   // get time now
 	    struct tm * now = localtime( & t );
 	    myfile <<"["

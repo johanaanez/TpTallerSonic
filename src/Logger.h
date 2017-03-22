@@ -1,7 +1,6 @@
 #ifndef LOGGER_H_
 #define LOGGER_H_
 
-#include <string>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -12,12 +11,10 @@ using namespace std;
 class Logger {
 
 private:
-	char* archivo; //file name where the logger is become to write all messages
+	char* archivo; //archivo donde el logger va a escribir todos los mensajes
 	enum Nivel {INFO, DEBBUG, ERROR };
-	Nivel nivel;   //TODO(joha): create a level struct with 3 log values: high, medium and low
+	Nivel nivel;
 	vector<string> logMessages;
-
-
 
 public:
 	Logger();
