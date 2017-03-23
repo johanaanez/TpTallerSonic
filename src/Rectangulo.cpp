@@ -8,7 +8,10 @@ Rectangulo::Rectangulo() : ancho(), alto()
 Rectangulo::Rectangulo(int ancho, int alto, unsigned int id, std::string color, std::string rutaImagen, int x, int y, unsigned int indexZ)
 : Entidad(id, color, rutaImagen, x, y, indexZ), ancho(ancho), alto(alto)
 {
-	this->rectanguloSDL.x = x; this->rectanguloSDL.y = y; this->rectanguloSDL.w = ancho; this->rectanguloSDL.h = alto;
+	this->rectanguloSDL.x = x;
+	this->rectanguloSDL.y = y;
+	this->rectanguloSDL.w = ancho;
+	this->rectanguloSDL.h = alto;
 }
 
 Rectangulo::~Rectangulo() {
@@ -20,16 +23,16 @@ void Rectangulo::dibujar(SDL_Renderer *renderer)
 	if (tieneRutaImagen())
 	{
 		cargarImagen(renderer);
-		repetirImagen(renderer);
+		mostrarImagen(renderer);
 	}
 	else
 	{
-		this->setearColor(renderer);
-		SDL_RenderFillRect(renderer, &rectanguloSDL); //SDL_RenderDrawRect lo crea sin relleno
+		setearColor(renderer);
+		SDL_RenderFillRect(renderer, &rectanguloSDL);
 	}
 }
 
-void Rectangulo::repetirImagen(SDL_Renderer *renderer)
+void Rectangulo::mostrarImagen(SDL_Renderer *renderer)
 {
 	if (obtenerImagen() == NULL)
 	{
@@ -42,49 +45,53 @@ void Rectangulo::repetirImagen(SDL_Renderer *renderer)
 
 	if ((anchoImagen >= ancho) && (altoImagen >= alto))
 	{
-		SDL_Rect recorte = {0, 0, ancho, alto}; //Toma la esquina superior izquierda de la imagen
+		//Recorta la imagen
+		SDL_Rect recorte = {0, 0, ancho, alto}; //Toma desde la esquina superior izquierda de la imagen
 		SDL_RenderCopy(renderer, obtenerImagen(), &recorte, &rectanguloSDL);
 		return;
 	}
-
-	if ((anchoImagen < ancho) || (altoImagen < alto))
+	else
 	{
-		//Rellenar con imagen hacia la derecha y hacia abajo
-		int vecesARepetirEnX = 0, vecesARepetirEnY = 0;
-		int origenX = 0, origenY = 0;
+		setearColor(renderer);
 
-		vecesARepetirEnX = (ancho / anchoImagen); //division entera entre int
-
-		if ((ancho % anchoImagen) > 0)
+		if (ancho > anchoImagen)
 		{
-			vecesARepetirEnX++;
+			//Rellena a la derecha de la imagen
+			SDL_Rect relleno = {obtenerX() + anchoImagen, obtenerY(), ancho - anchoImagen, alto};
+			SDL_RenderFillRect(renderer, &relleno);
 		}
 
-		vecesARepetirEnY = (alto / altoImagen); //division entera entre int
-
-		if ((alto % altoImagen) > 0)
+		if (alto > altoImagen)
 		{
-			vecesARepetirEnY++;
+			//Rellena abajo de la imagen
+			SDL_Rect relleno = {obtenerX(), obtenerY() + altoImagen, ancho, alto - altoImagen};
+			SDL_RenderFillRect(renderer, &relleno);
 		}
 
-
-		int destinoY = obtenerY();
-
-		for (int i = 0; i < vecesARepetirEnY; i++) //Hacia abajo
+		//Muestra la imagen
+		if ((ancho > anchoImagen) && (alto > altoImagen))
 		{
-			int destinoX = obtenerX();
-			for (int j = 0; j < vecesARepetirEnX ; j++) //Hacia la derecha
-			{
-				SDL_Rect origenImagen = {origenX, origenY, anchoImagen, altoImagen};
-				SDL_Rect destino = {destinoX, destinoY, anchoImagen, altoImagen};
-				SDL_RenderCopy(renderer, obtenerImagen(), &origenImagen, &destino);
-
-				destinoX = destinoX + anchoImagen;
-			}
-			destinoY = destinoY + altoImagen;
+			//Muestra toda la imagen
+			SDL_Rect recorte = {0, 0, anchoImagen, altoImagen};
+			SDL_Rect destino = {obtenerX(), obtenerY(), anchoImagen, altoImagen};
+			SDL_RenderCopy(renderer, obtenerImagen(), &recorte, &destino);
+		}
+		else if (ancho > anchoImagen)
+		{
+			//Muestra la parte superior de la imagen
+			SDL_Rect recorte = {0, 0, anchoImagen, alto};
+			SDL_Rect destino = {obtenerX(), obtenerY(), anchoImagen, alto};
+			SDL_RenderCopy(renderer, obtenerImagen(), &recorte, &destino);
+		}
+		else if (alto > altoImagen)
+		{
+			//Muestra la parte izquierda de la imagen
+			SDL_Rect recorte = {0, 0, ancho, altoImagen};
+			SDL_Rect destino = {obtenerX(), obtenerY(), ancho, altoImagen};
+			SDL_RenderCopy(renderer, obtenerImagen(), &recorte, &destino);
 		}
 
+		return;
 	}
-
 }
 

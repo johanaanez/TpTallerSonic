@@ -56,6 +56,11 @@ void Circulo::dibujarImagen(SDL_Renderer *renderer)
 	SDL_Rect puntoADibujar = {0, 0, 0, 0};
 	SDL_Rect puntoDestino = {0, 0, 0, 0};
 
+	int  anchoImagen, altoImagen;
+	SDL_QueryTexture(obtenerImagen(), NULL, NULL, &anchoImagen, &altoImagen);
+
+	setearColor(renderer);
+
 	//Para cada punto dentro del cuadrado que encierra al circulo
 	for (int xPunto=0; xPunto<diametro; xPunto++)
 	{
@@ -66,9 +71,24 @@ void Circulo::dibujarImagen(SDL_Renderer *renderer)
 			if ((difX*difX + difY*difY) <= (radio*radio)) //Si el punto esta dentro del circulo
 			{
 				 //Empieza desde la esquina superior izquierda de la imagen
-				puntoADibujar.x = xPunto; puntoADibujar.y = yPunto; puntoADibujar.w = 1; puntoADibujar.h = 1;
-				puntoDestino.x = obtenerX()-radio+xPunto; puntoDestino.y = obtenerY()-radio+yPunto; puntoDestino.w = 1; puntoDestino.h = 1;
-				SDL_RenderCopy(renderer, obtenerImagen(), &puntoADibujar, &puntoDestino);
+				puntoADibujar.x = xPunto;
+				puntoADibujar.y = yPunto;
+				puntoADibujar.w = 1;
+				puntoADibujar.h = 1;
+
+				puntoDestino.x = obtenerX()-radio+xPunto;
+				puntoDestino.y = obtenerY()-radio+yPunto;
+				puntoDestino.w = 1;
+				puntoDestino.h = 1;
+
+				if ((xPunto <= anchoImagen) && (yPunto <= altoImagen))
+				{
+					SDL_RenderCopy(renderer, obtenerImagen(), &puntoADibujar, &puntoDestino);
+				}
+				else
+				{
+					SDL_RenderDrawPoint(renderer, puntoDestino.x, puntoDestino.y);
+				}
 			}
 		}
 	}

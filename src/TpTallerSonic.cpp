@@ -71,8 +71,21 @@ int main(void) { /*******MAIN DE PRUEBA*******/
 	Circulo circuloConImagen = Circulo(50, 1, "amarillo", "res/sonic.png", 550, 550, 1);
 	circuloConImagen.dibujar(renderer);
 */
-	Rectangulo rectanguloGrande = Rectangulo(800, 600, 1, "amarillo", "res/tile.png", 0, 0, 1);
+
+	Rectangulo rectanguloGrande = Rectangulo(600, 100, 1, "color erroneo", "res/sonic logo transparente.png", 10, 10, 1);
 	rectanguloGrande.dibujar(renderer);
+
+	Rectangulo rectanguloGrande2 = Rectangulo(200, 300, 1, "color erroneo", "res/sonic logo transparente.png", 10, 250, 1);
+	rectanguloGrande2.dibujar(renderer);
+
+	Rectangulo rectanguloGrande3 = Rectangulo(550, 250, 1, "color erroneo", "res/sonic logo transparente.png", 220, 120, 1);
+	rectanguloGrande3.dibujar(renderer);
+
+	Circulo circuloConImagen2 = Circulo(150, 1, "amarillo", "res/sonic logo transparente.png", 600, 450, 1);
+	circuloConImagen2.dibujar(renderer);
+
+
+
 
 	//Actualizar la pantalla
 	SDL_RenderPresent(renderer);

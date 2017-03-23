@@ -32,6 +32,11 @@ SDL_Color Entidad::convertirColor(std::string color)
 	else if (color == "verde"){
 		colorSDL.r = 0; colorSDL.g = 255; colorSDL.b = 0; colorSDL.a = 255;
 	}
+	else
+	{
+		//Color por default: azul
+		colorSDL.r = 0; colorSDL.g = 0; colorSDL.b = 255; colorSDL.a = 255;
+	}
 	return colorSDL;
 }
 
