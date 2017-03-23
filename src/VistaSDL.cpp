@@ -13,91 +13,93 @@ using namespace std;
 
 VistaSDL::VistaSDL(){
 
-		//Inicializa SDL
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-	{
-		printf( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
-	}
-	else
-	{
-		//Set texture filtering to linear
-		if( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ) )
+	this->altoVentana =480;
+	this->anchoVentana= 640;
+	this->superficiePantalla = NULL;
+	this->superficieACargar = NULL;
+	this->renderizador = NULL;
+	this->imgFlags = 0;
+	//Inicializa SDL
+		if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 		{
-			printf( "Warning: Linear texture filtering not enabled!" );
-		}
-
-		//Crea ventana
-		this->ventana SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, this->anchoVentana, this->altoVentana, SDL_WINDOW_SHOWN );
-		if( this->ventana == NULL )
-		{
-			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
+			printf( "SDL no pudo iniciar! SDL Error: %s\n", SDL_GetError() );
 		}
 		else
 		{
-			//Crea vsynced renderer para la ventana
-			this->renderizador = SDL_CreateRenderer( this->ventana, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
-			if( this->renderizador == NULL )
+			//Crea ventana
+			this->ventana = SDL_CreateWindow( "Juego Sonic", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, this->anchoVentana, this->altoVentana, SDL_WINDOW_SHOWN );
+			if( this->ventana == NULL )
 			{
-				printf( "Renderer could not be created! SDL Error: %s\n", SDL_GetError() );
+				printf( "ventana no se pudo crear! SDL Error: %s\n", SDL_GetError() );
 			}
 			else
 			{
-				//Initialize renderer color
-				SDL_SetRenderDrawColor( this->renderizador, 0xFF, 0xFF, 0xFF, 0xFF );
-
-				//Initialize PNG loading
-				imgFlags = IMG_INIT_PNG;
+				//inicia carga PNG
+				int imgFlags = IMG_INIT_PNG;
 				if( !( IMG_Init( imgFlags ) & imgFlags ) )
 				{
-					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+					printf( "SDL_image no se pudo crear! SDL_image Error: %s\n", IMG_GetError() );
+				}
+				else
+				{
+					//obtener superficie ventana
+					this->superficiePantalla = SDL_GetWindowSurface( this->ventana );
 				}
 			}
 		}
+
 	}
-}
 
 void VistaSDL::mostrarVentana(){
 
-	SDL_Surface* superciciePantalla = SDL_GetWindowSurface( this->ventana );
 
-	//Main loop flag
+	superficieACargar = SDL_LoadBMP( "hello_world.bmp" );
+
+	//loop cerrar ventana si apretamos la cruz de la misma
 			bool quit = false;
 
-			//Event handler
+			//manejar eventos
 			SDL_Event e;
 
-			//While application is running
+			//mientras corre la aplicacion
 			while( !quit )
 			{
-				//Handle events on queue
+				//manejar eventos en la cola
 				while( SDL_PollEvent( &e ) != 0 )
 				{
-					//User requests quit
+					//usuario pide cierre
 					if( e.type == SDL_QUIT )
 					{
 						quit = true;
 					}
 				}
 
-				//Apply the image
-				//SDL_BlitSurface( gXOut, NULL, gScreenSurface, NULL );
+				//dibujar
+				SDL_BlitSurface( superficieACargar, NULL, superficiePantalla, NULL );
 
 
 				SDL_UpdateWindowSurface( this->ventana );
-
-				//Wait two seconds
-				SDL_Delay( 2000 );
 
 			}
 }
 
 void VistaSDL::cerrar(){
 
+	//destruir ventana render
+		SDL_DestroyRenderer( this->renderizador );
+		SDL_DestroyWindow( this->ventana );
+		this->ventana = NULL;
+		this->renderizador = NULL;
+
+		//Quit SDL subsystems
+		IMG_Quit();
+		SDL_Quit();
+
 }
 
 VistaSDL::~VistaSDL(){
 
-	//Destroy window
+	//destruir ventana render
 	SDL_DestroyRenderer( this->renderizador );
 	SDL_DestroyWindow( this->ventana );
 	this->ventana = NULL;

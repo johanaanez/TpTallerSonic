@@ -20,6 +20,9 @@ class VistaSDL{
 private:
 	SDL_Window* ventana;
 	SDL_Renderer* renderizador;
+	SDL_Surface* superficiePantalla;
+	SDL_Surface* superficieACargar;
+
 	int anchoVentana;
 	int altoVentana;
 	int imgFlags;

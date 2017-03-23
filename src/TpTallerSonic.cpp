@@ -6,14 +6,22 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
+
+//#include </usr/include/SDL2/SDL.h>
 #include <iostream>
-#include </usr/include/SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL.h>
+using namespace std;
+#include <string>
+#include "VistaSDL.h"
 
 using namespace std;
 
 int main() {
 
+	VistaSDL *ventana = new VistaSDL();
+	ventana->mostrarVentana();
+	ventana->cerrar();
 
-	cout << "!!!capas!!!" << endl; // prints !!!Hello World!!!
 	return 0;
 }
