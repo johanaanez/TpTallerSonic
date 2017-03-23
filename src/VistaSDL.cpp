@@ -17,7 +17,7 @@ VistaSDL::VistaSDL(){
 	this->anchoVentana= 640;
 	this->superficiePantalla = NULL;
 	this->superficieACargar = NULL;
-	this->renderizador = NULL;
+
 	this->imgFlags = 0;
 	//Inicializa SDL
 		if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
@@ -33,27 +33,45 @@ VistaSDL::VistaSDL(){
 				printf( "ventana no se pudo crear! SDL Error: %s\n", SDL_GetError() );
 			}
 			else
-			{
-				//inicia carga PNG
-				int imgFlags = IMG_INIT_PNG;
-				if( !( IMG_Init( imgFlags ) & imgFlags ) )
-				{
-					printf( "SDL_image no se pudo crear! SDL_image Error: %s\n", IMG_GetError() );
-				}
-				else
-				{
-					//obtener superficie ventana
-					this->superficiePantalla = SDL_GetWindowSurface( this->ventana );
-				}
-			}
-		}
+			{      //creo render para la ventana
+			renderizador = SDL_CreateRenderer( ventana, -1, SDL_RENDERER_ACCELERATED );
+					if( renderizador == NULL )
+					{
+							printf( "Renderer could not be created! SDL Error: %s\n", SDL_GetError() );
+					}
 
-	}
+					else
+						{
+						//Initialize renderer color
+						SDL_SetRenderDrawColor( renderizador, 0xFF, 0xFF, 0xFF, 0xFF );
+
+						//inicia carga PNG
+						int imgFlags = IMG_INIT_PNG;
+						if( !( IMG_Init( imgFlags ) & imgFlags ) )
+						{
+							printf( "SDL_image no se pudo crear! SDL_image Error: %s\n", IMG_GetError() );
+						}
+						else
+						{
+							//obtener superficie ventana
+							this->superficiePantalla = SDL_GetWindowSurface( this->ventana );
+						}
+						}
+			}
+
+		}
+}
+
+void VistaSDL::cargarTexturas(){
+
+	capaFondo = new Textura();
+	this->capaFondo->cargarImagen( "capa0.png" ,renderizador);
+}
 
 void VistaSDL::mostrarVentana(){
 
 
-	superficieACargar = SDL_LoadBMP( "hello_world.bmp" );
+
 
 	//loop cerrar ventana si apretamos la cruz de la misma
 			bool quit = false;
@@ -74,11 +92,10 @@ void VistaSDL::mostrarVentana(){
 					}
 				}
 
-				//dibujar
-				SDL_BlitSurface( superficieACargar, NULL, superficiePantalla, NULL );
+				this->capaFondo->renderizar(200,200);
+				//actualizar ventana
+				SDL_RenderPresent( renderizador );
 
-
-				SDL_UpdateWindowSurface( this->ventana );
 
 			}
 }
@@ -99,16 +116,7 @@ void VistaSDL::cerrar(){
 
 VistaSDL::~VistaSDL(){
 
-	//destruir ventana render
-	SDL_DestroyRenderer( this->renderizador );
-	SDL_DestroyWindow( this->ventana );
-	this->ventana = NULL;
-	this->renderizador = NULL;
-
-	//Quit SDL subsystems
-	IMG_Quit();
-	SDL_Quit();
-
+	this->cerrar();
 }
 
 

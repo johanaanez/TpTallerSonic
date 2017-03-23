@@ -10,7 +10,7 @@
 #include <SDL2/SDL.h>
 using namespace std;
 #include <string>
-
+#include "Textura.h"
 
 #ifndef VISTASDL_H_
 #define VISTASDL_H_
@@ -22,13 +22,16 @@ private:
 	SDL_Renderer* renderizador;
 	SDL_Surface* superficiePantalla;
 	SDL_Surface* superficieACargar;
-
+	Textura* capaFondo;
+	Textura* capaNivel;
 	int anchoVentana;
 	int altoVentana;
 	int imgFlags;
 
 public:
 	VistaSDL();
+	void cargarImagen();
+	void cargarTexturas();
 	void mostrarVentana();
 	void cerrar();
 	~VistaSDL();

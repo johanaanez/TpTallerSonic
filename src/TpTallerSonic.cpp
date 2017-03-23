@@ -14,14 +14,16 @@
 using namespace std;
 #include <string>
 #include "VistaSDL.h"
+#include "Textura.h"
 
 using namespace std;
 
 int main() {
 
-	VistaSDL *ventana = new VistaSDL();
-	ventana->mostrarVentana();
-	ventana->cerrar();
+	VistaSDL *vista = new VistaSDL();
+	vista->cargarTexturas();
+	vista->mostrarVentana();
+	vista->cerrar();
 
 	return 0;
 }
