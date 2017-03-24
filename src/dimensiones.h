@@ -15,11 +15,21 @@ namespace std {
 class dimensiones  {
 public:
 
- 	virtual void settipo(std::string) = 0;
+ //	virtual void settipo(int) = 0;
+ 	virtual void settipo2(const char*) = 0;
+ 	virtual const char* gettipo2() = 0;
+
+ 	virtual const char* getnombrevalor1() = 0;
+ 	virtual int getvalor1() = 0;
+ 	virtual const char* getnombrevalor2() = 0;
+ 	virtual int getvalor2() = 0;
+ 	//virtual int gettipo() = 0;
 
 	dimensiones();
 	virtual ~dimensiones();
-
+private:
+	//int tipo;
+	const char* tipo2;
 
 };
 

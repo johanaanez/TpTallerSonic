@@ -14,19 +14,33 @@
 #include "jescenario.h"
 #include "capas.h"
 #include "jentidades.h"
+#include "jescenarioJuego.h"
 #include <list>
 #include "dimensiones.h"
-
 #include "parseadorJson.h"
+
+#include "jpruebas.h"
+
 using namespace std;
 
 int main() {
 
 	json_t *json;
 
-	parseadorJson* parseador = new parseadorJson();
-    json=parseador->parsearArchivoseg("./configuracion/f.json");
-    parseador->setjson(*json);
+
+
+    parseadorJson* parseador = new parseadorJson();
+	jescenarioJuego* jparseador = parseador->parsearArchivo("./configuracion/f.json");
+
+
+	jpruebas* prueba = new jpruebas();
+	prueba->prueba(jparseador);
+
+
+
+
+
+
 
 }
 

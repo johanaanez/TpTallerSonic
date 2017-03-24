@@ -22,7 +22,8 @@ src/parseadorJson.o: ../src/parseadorJson.cpp /usr/include/SDL2/SDL.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
  ../src/jventana.h ../src/jconfiguracion.h ../src/jescenario.h \
  ../src/capas.h ../src/jentidades.h ../src/dimensiones.h \
- ../src/parseadorJson.h ../src/jrectangulo.h ../src/jcirculo.h
+ ../src/parseadorJson.h ../src/jescenarioJuego.h ../src/jrectangulo.h \
+ ../src/jcirculo.h
 
 /usr/include/SDL2/SDL.h:
 
@@ -123,6 +124,8 @@ src/parseadorJson.o: ../src/parseadorJson.cpp /usr/include/SDL2/SDL.h \
 ../src/dimensiones.h:
 
 ../src/parseadorJson.h:
+
+../src/jescenarioJuego.h:
 
 ../src/jrectangulo.h:
 

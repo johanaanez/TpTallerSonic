@@ -10,23 +10,27 @@
 
 #include <string>
 
+#include "jescenarioJuego.h"
+
 namespace std {
 
 class parseadorJson {
+
 public:
+
 	parseadorJson();
 	virtual ~parseadorJson();
-	void parsearArchivo(char*  nombreArchivo);
-	json_t* parsearArchivoseg(char*  nombreArchivo);
+	jescenarioJuego* parsearArchivo(char*  nombreArchivo);
+	//char* getFiguraparser() const;
+	//void setFiguraparse(int level);
+private:
+
+
 	jventana* cargarVentana(json_t* raiz);
 	jconfiguracion* cargarConfiguracion(json_t* raiz);
 	jescenario* cargarEscenario(json_t* raiz);
-	json_t getjson();
-	void setjson(json_t);
 
-private:
-   //	jventana* cargarVentana(json_t* raiz);
-	json_t raiz;
+
 };
 
 } /* namespace std */

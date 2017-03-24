@@ -37,17 +37,17 @@ void jescenario::setalto(int altoesc){
 
 //capas
 list<capas> jescenario::getcapas(){
-	return list<capas>();
+	return this->c;
 }
 void jescenario::setcapas(list<capas> aux){
-	list<capas>() = aux;
+	this->c = aux;
 }
 
 //escenario
 list<jentidades> jescenario::getentidades(){
-	return list<jentidades>();
+	return this->je;
 }
 void jescenario::setentidades(list<jentidades> aux){
-	list<jentidades>() = aux;
+	this->je = aux;
 }
 } /* namespace std */

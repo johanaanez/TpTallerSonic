@@ -8,11 +8,12 @@
 #include "jentidades.h"
 #include "dimensiones.h"
 
+
 namespace std {
 
 jentidades::jentidades() {
 	// TODO Auto-generated constructor stub
-
+	this->dim = NULL;
 }
 
 jentidades::~jentidades() {
@@ -43,21 +44,29 @@ void jentidades:: setcolor(std::string colorent){
 	color = colorent;
 }
 
-//dimension ancho
-int jentidades::getancho(){
-	return ancho;
-}
-void jentidades::setancho(int anchoent){
-	ancho = anchoent;
+dimensiones* jentidades::getDim(){
+	return dim;
 }
 
-//dimensionalto
-int jentidades::getalto(){
-	return alto;
+void jentidades::setDim(dimensiones* dim) {
+	this->dim = dim;
 }
-void jentidades::setalto(int altoent){
-	alto = altoent;
-}
+
+//dimension ancho
+//int jentidades::getancho(){
+	//return ancho;
+//}
+//void jentidades::setancho(int anchoent){
+	//ancho = anchoent;
+//}
+
+////dimensionalto
+//int jentidades::getalto(){
+	//return alto;
+//}
+//void jentidades::setalto(int altoent){
+	//alto = altoent;
+//}
 
 //coordenada x
 int jentidades::getcoorx(){

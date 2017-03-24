@@ -29,12 +29,15 @@ public:
 	void setcolor(std::string);
 
 	// dimension ancho
-	int getancho();
-	void setancho(int);
+	//int getancho();
+	//void setancho(int);
 
 	// dimension alto
-	int getalto();
-	void setalto(int);
+	//int getalto();
+	//void setalto(int);
+
+	dimensiones* getDim();
+	void setDim(dimensiones* dim);
 
 	// coordenada x
 	int getcoorx();
@@ -51,6 +54,8 @@ public:
 	//index
 	int getindex();
 	void setindex(int);
+
+
 
 private:
 	int id;

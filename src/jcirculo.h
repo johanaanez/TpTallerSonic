@@ -15,14 +15,24 @@ class jcirculo: public dimensiones {
 public:
 	jcirculo();
 	virtual ~jcirculo();
-	void settipo(std::string);
+
+	void settipo2(const char*);
+	const char* gettipo2();
     //radio
     void setradio(int);
     int  getradio();
 
+    //metodos virtuales
+ 	int getvalor1();
+ 	const char* getnombrevalor1();
+ 	int getvalor2();
+ 	const char* getnombrevalor2();
+
+
 	private:
 
-	 std::string tipo;
+	 int tipo;
+	 const char* tipo2;
 	 int radio;
 };
 

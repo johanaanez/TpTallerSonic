@@ -11,6 +11,8 @@ CPP_SRCS += \
 ../src/jconfiguracion.cpp \
 ../src/jentidades.cpp \
 ../src/jescenario.cpp \
+../src/jescenarioJuego.cpp \
+../src/jpruebas.cpp \
 ../src/jrectangulo.cpp \
 ../src/jventana.cpp \
 ../src/parseadorJson.cpp 
@@ -23,6 +25,8 @@ OBJS += \
 ./src/jconfiguracion.o \
 ./src/jentidades.o \
 ./src/jescenario.o \
+./src/jescenarioJuego.o \
+./src/jpruebas.o \
 ./src/jrectangulo.o \
 ./src/jventana.o \
 ./src/parseadorJson.o 
@@ -35,6 +39,8 @@ CPP_DEPS += \
 ./src/jconfiguracion.d \
 ./src/jentidades.d \
 ./src/jescenario.d \
+./src/jescenarioJuego.d \
+./src/jpruebas.d \
 ./src/jrectangulo.d \
 ./src/jventana.d \
 ./src/parseadorJson.d 
