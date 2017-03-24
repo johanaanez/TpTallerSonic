@@ -237,6 +237,7 @@ jescenarioJuego* parseadorJson::parsearArchivo(char* nombreArchivo){
 	 json = json_load_file(nombreArchivo,0,&error);
 
 
+
 	  if(!json) {
 
 	       cout << "!!! hay  probremas!!!" << endl;

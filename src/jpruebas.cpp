@@ -43,7 +43,7 @@ void jpruebas::prueba(jescenarioJuego* parser){
 	cout << "ancho:" << parser->getVentana()->getancho() << endl;
 	cout << "alto:" << parser->getVentana()->getalto() << endl;
 
-	cout << "CONFIGURACION" << endl;
+	/*cout << "CONFIGURACION" << endl;
 	cout << "vel_scroll:" << parser->getConfiguracion()->getvelscroll() << endl;
 
 	cout << "ESCENARIO" << endl;
@@ -77,7 +77,7 @@ void jpruebas::prueba(jescenarioJuego* parser){
     }
 
 
-
+*/
 
 }
 
