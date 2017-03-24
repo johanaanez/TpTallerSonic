@@ -11,8 +11,8 @@ using namespace std;
 #include <string>
 #include "VistaSDL.h"
 
-VistaSDL::VistaSDL(){
-
+VistaSDL::VistaSDL()
+{
 	this->altoVentana =480;
 	this->anchoVentana= 640;
 	this->superficiePantalla = NULL;
@@ -20,10 +20,10 @@ VistaSDL::VistaSDL(){
 
 	this->imgFlags = 0;
 	//Inicializa SDL
-		if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-		{
+	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+	{
 			printf( "SDL no pudo iniciar! SDL Error: %s\n", SDL_GetError() );
-		}
+	}
 		else
 		{
 			//Crea ventana
@@ -34,88 +34,88 @@ VistaSDL::VistaSDL(){
 			}
 			else
 			{      //creo render para la ventana
-			renderizador = SDL_CreateRenderer( ventana, -1, SDL_RENDERER_ACCELERATED );
-					if( renderizador == NULL )
+				renderizador = SDL_CreateRenderer( ventana, -1, SDL_RENDERER_ACCELERATED );
+				if( renderizador == NULL )
+				{
+					printf( "renderer no se pudo crear! SDL Error: %s\n", SDL_GetError() );
+				}
+				else
+				{
+					//Initialize renderer color
+					SDL_SetRenderDrawColor( renderizador, 0xFF, 0xFF, 0xFF, 0xFF );
+					//inicia carga PNG
+					int imgFlags = IMG_INIT_PNG;
+					if( !( IMG_Init( imgFlags ) & imgFlags ) )
 					{
-							printf( "Renderer could not be created! SDL Error: %s\n", SDL_GetError() );
+						printf( "SDL_image no se pudo crear! SDL_image Error: %s\n", IMG_GetError() );
 					}
-
 					else
-						{
-						//Initialize renderer color
-						SDL_SetRenderDrawColor( renderizador, 0xFF, 0xFF, 0xFF, 0xFF );
-
-						//inicia carga PNG
-						int imgFlags = IMG_INIT_PNG;
-						if( !( IMG_Init( imgFlags ) & imgFlags ) )
-						{
-							printf( "SDL_image no se pudo crear! SDL_image Error: %s\n", IMG_GetError() );
-						}
-						else
-						{
-							//obtener superficie ventana
-							this->superficiePantalla = SDL_GetWindowSurface( this->ventana );
-						}
-						}
+					{
+						//obtener superficie ventana
+						this->superficiePantalla = SDL_GetWindowSurface( this->ventana );
+					}
+				}
 			}
 
 		}
 }
 
-void VistaSDL::cargarTexturas(){
-
+void VistaSDL::cargarTexturas()
+{
 	capaFondo = new Textura();
 	this->capaFondo->cargarImagen( "capa0.png" ,renderizador);
 }
 
-void VistaSDL::mostrarVentana(){
+int VistaSDL::obtenerAltoVentana()
+{
+	return this->altoVentana;
+}
 
+int VistaSDL::obtenerAnchoVentana()
+{
+	return this->anchoVentana;
+}
 
-
-
+void VistaSDL::mostrarVentana()
+{
 	//loop cerrar ventana si apretamos la cruz de la misma
-			bool quit = false;
+	bool quit = false;
 
-			//manejar eventos
-			SDL_Event e;
-
-			//mientras corre la aplicacion
-			while( !quit )
+	//manejar eventos
+	SDL_Event e;
+	//mientras corre la aplicacion
+	while( !quit )
+		{
+		//manejar eventos en la cola
+	  		while( SDL_PollEvent( &e ) != 0 )
 			{
-				//manejar eventos en la cola
-				while( SDL_PollEvent( &e ) != 0 )
+				//usuario pide cierre
+				if( e.type == SDL_QUIT )
 				{
-					//usuario pide cierre
-					if( e.type == SDL_QUIT )
-					{
-						quit = true;
-					}
+					quit = true;
 				}
-
-				this->capaFondo->renderizar(200,200);
-				//actualizar ventana
-				SDL_RenderPresent( renderizador );
-
-
 			}
+			// dibuja en la ventana la textura mostrada en este caso capa0, los parametros son las coords donde renderiza la imagen
+			this->capaFondo->renderizar(0,0);
+			//actualizar ventana
+			SDL_RenderPresent( renderizador );
+		}
 }
 
-void VistaSDL::cerrar(){
-
+void VistaSDL::cerrar()
+{
 	//destruir ventana render
-		SDL_DestroyRenderer( this->renderizador );
-		SDL_DestroyWindow( this->ventana );
-		this->ventana = NULL;
-		this->renderizador = NULL;
-
-		//Quit SDL subsystems
-		IMG_Quit();
-		SDL_Quit();
-
+	SDL_DestroyRenderer( this->renderizador );
+	SDL_DestroyWindow( this->ventana );
+	this->ventana = NULL;
+	this->renderizador = NULL;
+	//Quit SDL subsystems
+	IMG_Quit();
+	SDL_Quit();
 }
 
-VistaSDL::~VistaSDL(){
-
+VistaSDL::~VistaSDL()
+{
 	this->cerrar();
 }
 

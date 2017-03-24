@@ -31,6 +31,8 @@ private:
 public:
 	VistaSDL();
 	void cargarImagen();
+	int obtenerAltoVentana();
+	int obtenerAnchoVentana();
 	void cargarTexturas();
 	void mostrarVentana();
 	void cerrar();

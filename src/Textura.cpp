@@ -12,16 +12,15 @@ using namespace std;
 #include "VistaSDL.h"
 #include "Textura.h"
 
-Textura::Textura(){
-
+Textura::Textura()
+{
 	this->textura = NULL;
 	this->anchoTextura = 0;
 	this->altoTextura = 0;
-//	this->renderizador = NULL;
 }
 
-void Textura::cargarImagen(std::string path,SDL_Renderer* render){
-
+void Textura::cargarImagen(std::string path,SDL_Renderer* render)
+{
 	this->renderizador = render;
 	//en caso que hubiera una textura creada, la libero para podeer crear otra
 	this->liberarTextura();
@@ -34,10 +33,10 @@ void Textura::cargarImagen(std::string path,SDL_Renderer* render){
 	{
 		//Color key image
 //		SDL_SetColorKey( superficie, SDL_TRUE, SDL_MapRGB( superficie->format, 0, 0xFF, 0xFF ) );
-
 		//Create texture from surface pixels
         textura = SDL_CreateTextureFromSurface( renderizador, superficie );
-		if( textura == NULL )
+
+        if( textura == NULL )
 		{
 			printf( "incapaz de crear textura %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
 		}
@@ -52,18 +51,33 @@ void Textura::cargarImagen(std::string path,SDL_Renderer* render){
 	}
 }
 
+int Textura::obtenerAnchoTextura()
+{
+	return this->anchoTextura;
+}
+
+int Textura::obtenerAltoTextura()
+{
+
+	return this->altoTextura;
+}
+
 void Textura::renderizar( int ancho, int alto )
 {
+	//Clear screen
+	SDL_SetRenderDrawColor( renderizador, 0xFF, 0xFF, 0xFF, 0xFF );
+	SDL_RenderClear( renderizador );
+
 	//renderiza en la pantalla un bloque con las dimensiones pasadas por pantalla
 	SDL_Rect rectanguloRenderizacion = { ancho, alto, this->anchoTextura, this->altoTextura };
 	SDL_RenderCopy( renderizador, textura, NULL, &rectanguloRenderizacion );
 }
 
 
-void Textura::liberarTextura(){
-
-	if(textura != NULL){
-
+void Textura::liberarTextura()
+{
+	if(textura != NULL)
+	{
 		SDL_DestroyTexture( this->textura );
 		this->textura = NULL;
 		this->anchoTextura = 0;
@@ -71,13 +85,13 @@ void Textura::liberarTextura(){
 	}
 }
 
-SDL_Texture* Textura::obtenerTextura(){
-
+SDL_Texture* Textura::obtenerTextura()
+{
 	return textura;
 }
 
-Textura::~Textura(){
-
+Textura::~Textura()
+{
 	this->liberarTextura();
 }
 
